@@ -1,0 +1,15 @@
+top-down world of zuul-typ
+
+karta
+graf för rum
+rum-klass
+föremålsklass, spelaren är ett föremål?
+spelaren kontrollerbart objekt
+storklass som är barriär, no-clip
+kanske lager för 3d
+
+http://libgdx.badlogicgames.com/
+http://jmonkeyengine.org/
+http://zetcode.com/tutorials/javagamestutorial/
+https://www.youtube.com/watch?v=hBhAWTSu104
+https://processing.org/

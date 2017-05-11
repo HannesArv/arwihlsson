@@ -1,10 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Konrad on 2017-04-30.
  */
-public class Nova extends JFrame {
+public class Nova extends JFrame{
 
     public Nova(){
         initUI();
@@ -13,8 +14,9 @@ public class Nova extends JFrame {
     private void initUI(){
 
         add(new Window());
+        pack();
         setBackground(new Color(255,0,0));
-        setSize(250, 250);
+        setSize(1100, 1000);
         setTitle("Nova");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

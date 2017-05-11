@@ -6,7 +6,9 @@ import java.awt.*;
  */
 public class Nova extends JFrame {
 
-    public Nova(){ }
+    public Nova(){
+        initUI();
+    }
 
     private void initUI(){
 

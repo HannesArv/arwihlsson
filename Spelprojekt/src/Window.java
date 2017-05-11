@@ -19,7 +19,6 @@ public class Window extends JPanel implements ActionListener{
     }
 
     private void initWindow(){
-
         addKeyListener(new TAdapter());
         setFocusable(true);
         setBackground(Color.BLACK);
@@ -34,6 +33,7 @@ public class Window extends JPanel implements ActionListener{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         draw(g);
+        Toolkit.getDefaultToolkit().sync();
     }
 
     private void draw(Graphics g) {

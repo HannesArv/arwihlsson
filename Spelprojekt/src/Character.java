@@ -17,7 +17,7 @@ public class Character {
     }
 
     private void initChar(){
-        ImageIcon ii = new ImageIcon("Spelprojekt/src/images/character.png");
+        ImageIcon ii = new ImageIcon("Spelprojekt/src/images/kamraten.png");
         image = ii.getImage();
         x = 50;
         y = 50;

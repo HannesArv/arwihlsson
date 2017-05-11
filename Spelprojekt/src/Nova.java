@@ -13,6 +13,7 @@ public class Nova extends JFrame {
     private void initUI(){
 
         add(new Window());
+        setBackground(new Color(255,0,0));
         setSize(250, 250);
         setTitle("Nova");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

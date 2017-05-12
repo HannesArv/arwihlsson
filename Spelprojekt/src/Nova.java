@@ -13,8 +13,13 @@ public class Nova extends JFrame{
 
     private void initUI(){
 
-        add(new Window());
-        setSize(1100, 1000);
+        JPanel backgroundPanel = new JPanel();
+        backgroundPanel.setLayout(new OverlayLayout(backgroundPanel));
+        backgroundPanel.add(new Window());
+        backgroundPanel.add(new Background());
+
+        add(backgroundPanel);
+        setSize(1700, 1000);
         setTitle("Nova");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

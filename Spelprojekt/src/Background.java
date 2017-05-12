@@ -9,7 +9,7 @@ import java.io.IOException;
  * Created by Hannes on 12/05/2017.
  */
 public class Background extends JPanel {
-    private ImageIcon image;
+    private BufferedImage image;
 
     public Background() {
         initBackground();
@@ -17,7 +17,9 @@ public class Background extends JPanel {
 
     private void initBackground(){
         setFocusable(true);
+        setDoubleBuffered(true);
         setBackground(Color.WHITE);
+        grabImage();
     }
 
     @Override
@@ -28,26 +30,16 @@ public class Background extends JPanel {
     }
 
     private void draw(Graphics g){
-        ImageIcon ii = new ImageIcon("Spelprojekt/src/images/bruteforcemap.png");
-        Image image = ii.getImage();
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(image, 0, 0, this);
-
-        //try {
-        //    Image image = ImageIO.read(new File("Spelprojekt/src/images/bruteforcemap.png"));
-        //    Graphics2D g2d = (Graphics2D) g;
-        //    g2d.drawImage(image, 0, 0, this);
-        //}
-        //catch (IOException e){
-        //    System.out.println("AAAAH");
-        //}
     }
 
-    public int getBackgroundWidth(){
-        return image.getIconWidth();
-    }
-
-    public int getBackgroundHeight(){
-        return image.getIconHeight();
+    private void grabImage(){
+        try {
+            image = ImageIO.read(new File("Spelprojekt/src/images/bruteforcemap.png"));
+        }
+        catch (IOException e){
+            System.out.println("AAAAAH");
+        }
     }
 }

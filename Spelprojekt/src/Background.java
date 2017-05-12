@@ -9,7 +9,7 @@ import java.io.IOException;
  * Created by Hannes on 12/05/2017.
  */
 public class Background extends JPanel {
-    private BufferedImage image;
+    private Image image;
 
     public Background() {
         initBackground();
@@ -36,10 +36,11 @@ public class Background extends JPanel {
 
     private void grabImage(){
         try {
-            image = ImageIO.read(new File("Spelprojekt/src/images/bruteforcemap.png"));
+            BufferedImage temp = ImageIO.read(new File("Spelprojekt/src/images/bruteforcemap.png"));
+            image = temp.getScaledInstance(temp.getWidth(), temp.getHeight(), Image.SCALE_DEFAULT);
         }
         catch (IOException e){
-            System.out.println("AAAAAH");
+            System.err.println("Couldn't find an image");
         }
     }
 }

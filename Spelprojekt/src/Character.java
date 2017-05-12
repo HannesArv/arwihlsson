@@ -26,7 +26,7 @@ public class Character {
             image = temp.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
         }
         catch (IOException e){
-            System.out.println("Couldn't find an image");
+            System.err.println("Couldn't find an image");
         }
         x = 50;
         y = 50;

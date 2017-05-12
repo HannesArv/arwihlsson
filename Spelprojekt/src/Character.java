@@ -1,5 +1,9 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
@@ -17,8 +21,13 @@ public class Character {
     }
 
     private void initChar(){
-        ImageIcon ii = new ImageIcon("Spelprojekt/src/images/kamraten.png");
-        image = ii.getImage();
+        try {
+            BufferedImage temp = ImageIO.read(new File("Spelprojekt/src/images/kamraten.png"));
+            image = temp.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+        }
+        catch (IOException e){
+            System.out.println("Couldn't find an image");
+        }
         x = 50;
         y = 50;
     }

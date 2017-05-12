@@ -1,5 +1,9 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by Hannes on 12/05/2017.
@@ -24,9 +28,19 @@ public class Background extends JPanel {
     }
 
     private void draw(Graphics g){
-        image = new ImageIcon("Spelprojekt/src/images/bruteforcemap.png");
+        ImageIcon ii = new ImageIcon("Spelprojekt/src/images/bruteforcemap.png");
+        Image image = ii.getImage();
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(image.getImage(), 0, 0, this);
+        g2d.drawImage(image, 0, 0, this);
+
+        //try {
+        //    Image image = ImageIO.read(new File("Spelprojekt/src/images/bruteforcemap.png"));
+        //    Graphics2D g2d = (Graphics2D) g;
+        //    g2d.drawImage(image, 0, 0, this);
+        //}
+        //catch (IOException e){
+        //    System.out.println("AAAAH");
+        //}
     }
 
     public int getBackgroundWidth(){

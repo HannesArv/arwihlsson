@@ -1,9 +1,11 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 /**
  * Created by Konrad on 2017-05-08.
@@ -21,7 +23,7 @@ public class Window extends JPanel implements ActionListener{
     private void initWindow(){
         addKeyListener(new TAdapter());
         setFocusable(true);
-        setBackground(Color.BLACK);
+        setOpaque(false);
 
         character = new Character();
 
@@ -36,7 +38,7 @@ public class Window extends JPanel implements ActionListener{
         Toolkit.getDefaultToolkit().sync();
     }
 
-    private void draw(Graphics g) {
+    private void draw(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(character.getImage(), character.getX(), character.getY(), this);
     }

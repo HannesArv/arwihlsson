@@ -23,6 +23,7 @@ public class Window extends JPanel implements ActionListener{
     private void initWindow(){
         addKeyListener(new TAdapter());
         setFocusable(true);
+        setDoubleBuffered(true);
         setOpaque(false);
 
         character = new Character(50, 50);

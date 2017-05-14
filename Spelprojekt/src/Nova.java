@@ -26,9 +26,9 @@ public class Nova extends JFrame{
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
-        EventQueue.invokeLater(new Runnable() {
+        EventQueue.invokeLater(new Runnable(){
             @Override
             public void run() {
                 Nova nova = new Nova();
@@ -37,7 +37,4 @@ public class Nova extends JFrame{
         });
 
     }
-
-
-
 }

@@ -26,7 +26,7 @@ public class Window extends JPanel implements ActionListener{
         setDoubleBuffered(true);
         setOpaque(false);
 
-        character = new Character();
+        character = new Character(50, 50);
 
         timer = new Timer(DELAY, this);
         timer.start();
@@ -45,12 +45,12 @@ public class Window extends JPanel implements ActionListener{
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e){
         character.move();
         repaint();
     }
 
-    private class TAdapter extends KeyAdapter {
+    private class TAdapter extends KeyAdapter{
 
         @Override
         public void keyReleased(KeyEvent e) {

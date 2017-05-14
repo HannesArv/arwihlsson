@@ -10,8 +10,10 @@ import java.io.IOException;
  */
 public class Background extends JPanel {
     private Image image;
+    private int backgroundWidth;
+    private int backgroundHeight;
 
-    public Background() {
+    public Background(){
         initBackground();
     }
 
@@ -19,6 +21,10 @@ public class Background extends JPanel {
         setFocusable(true);
         setDoubleBuffered(true);
         setBackground(Color.WHITE);
+
+        backgroundWidth = 1000;
+        backgroundHeight = 700;
+
         grabImage();
     }
 
@@ -37,10 +43,18 @@ public class Background extends JPanel {
     private void grabImage(){
         try {
             BufferedImage temp = ImageIO.read(new File("Spelprojekt/src/images/bruteforcemap.png"));
-            image = temp.getScaledInstance(temp.getWidth(), temp.getHeight(), Image.SCALE_DEFAULT);
+            image = temp.getScaledInstance(backgroundWidth, backgroundHeight, Image.SCALE_DEFAULT);
         }
         catch (IOException e){
             System.err.println("Couldn't find an image");
         }
+    }
+
+    public int getBackgroundWidth(){
+        return backgroundWidth;
+    }
+
+    public int getBackgroundHeight(){
+        return backgroundHeight;
     }
 }

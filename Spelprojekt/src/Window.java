@@ -14,6 +14,7 @@ import java.io.File;
 public class Window extends JPanel implements ActionListener{
     private Timer timer;
     private Character character;
+    private Enemy enemy;
     private final int DELAY = 10;
 
     public Window(){
@@ -27,6 +28,7 @@ public class Window extends JPanel implements ActionListener{
         setOpaque(false);
 
         character = new Character(50, 50);
+        enemy = new Enemy(50, 50);
 
         timer = new Timer(DELAY, this);
         timer.start();
@@ -42,6 +44,7 @@ public class Window extends JPanel implements ActionListener{
     private void draw(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(character.getImage(), character.getX(), character.getY(), this);
+        g2d.drawImage(enemy.getImage(), enemy.getX(), enemy.getY(), this);
     }
 
     @Override

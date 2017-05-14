@@ -42,7 +42,7 @@ public class Background extends JPanel {
 
     private void grabImage(){
         try {
-            BufferedImage temp = ImageIO.read(new File("Spelprojekt/src/images/bruteforcemap.png"));
+            BufferedImage temp = ImageIO.read(new File("Spelprojekt/src/images/map2.png"));
             image = temp.getScaledInstance(backgroundWidth, backgroundHeight, Image.SCALE_DEFAULT);
         }
         catch (IOException e){

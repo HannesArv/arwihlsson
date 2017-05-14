@@ -15,10 +15,12 @@ public class Character extends Structure{
     private int x;
     private int y;
     private Image image;
+
     private int xLeft;
     private int xRight;
     private int yTop;
     private int yBottom;
+
     private int yDoorTop;
     private int yDoorBottom;
     private int xDoorLeft;
@@ -26,6 +28,8 @@ public class Character extends Structure{
 
     public Character(int x, int y){
         super(x, y);
+        this.x = x;
+        this.y = y;
         initChar();
     }
 

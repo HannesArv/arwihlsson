@@ -13,12 +13,12 @@ public class Nova extends JFrame{
 
     private void initUI(){
 
-        JPanel backgroundPanel = new JPanel();
-        backgroundPanel.setLayout(new OverlayLayout(backgroundPanel));
-        backgroundPanel.add(new Window());
-        backgroundPanel.add(new Background());
+        JPanel gamePanel = new JPanel();
+        gamePanel.setLayout(new OverlayLayout(gamePanel));
+        gamePanel.add(new Window());
+        gamePanel.add(new Background());
 
-        add(backgroundPanel);
+        add(gamePanel);
         setSize(1700, 1000);
         setTitle("Nova");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,11 +1,15 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by Hannes on 12/05/2017.
  */
 public class Background extends JPanel {
-    private ImageIcon image;
+    private Image image;
 
     public Background() {
         initBackground();
@@ -13,7 +17,9 @@ public class Background extends JPanel {
 
     private void initBackground(){
         setFocusable(true);
+        setDoubleBuffered(true);
         setBackground(Color.WHITE);
+        grabImage();
     }
 
     @Override
@@ -24,16 +30,17 @@ public class Background extends JPanel {
     }
 
     private void draw(Graphics g){
-        image = new ImageIcon("Spelprojekt/src/images/bruteforcemap.png");
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(image.getImage(), 0, 0, this);
+        g2d.drawImage(image, 0, 0, this);
     }
 
-    public int getBackgroundWidth(){
-        return image.getIconWidth();
-    }
-
-    public int getBackgroundHeight(){
-        return image.getIconHeight();
+    private void grabImage(){
+        try {
+            BufferedImage temp = ImageIO.read(new File("Spelprojekt/src/images/bruteforcemap.png"));
+            image = temp.getScaledInstance(temp.getWidth(), temp.getHeight(), Image.SCALE_DEFAULT);
+        }
+        catch (IOException e){
+            System.err.println("Couldn't find an image");
+        }
     }
 }

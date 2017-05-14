@@ -45,12 +45,12 @@ public class Window extends JPanel implements ActionListener{
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e){
         character.move();
         repaint();
     }
 
-    private class TAdapter extends KeyAdapter {
+    private class TAdapter extends KeyAdapter{
 
         @Override
         public void keyReleased(KeyEvent e) {

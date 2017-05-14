@@ -16,18 +16,18 @@ public class Structure {
     protected boolean visible;
     protected Image image;
 
-    public Structure(int x, int y) {
+    public Structure(int x, int y){
         this.x = x;
         this.y = y;
         visible = true;
     }
 
-    protected void getImageDim() {
+    protected void getImageDim(){
         width = image.getWidth(null);
         height = image.getHeight(null);
     }
 
-    protected void loadImage(String imageSource, int scaleWidth, int scaleHeight) {
+    protected void loadImage(String imageSource, int scaleWidth, int scaleHeight){
         try {
             BufferedImage temp = ImageIO.read(new File(imageSource));
             image = temp.getScaledInstance(scaleWidth, scaleHeight, Image.SCALE_DEFAULT);

@@ -13,7 +13,7 @@ public class Background extends JPanel {
     private int backgroundWidth;
     private int backgroundHeight;
 
-    public Background() {
+    public Background(){
         initBackground();
     }
 
@@ -48,5 +48,13 @@ public class Background extends JPanel {
         catch (IOException e){
             System.err.println("Couldn't find an image");
         }
+    }
+
+    public int getBackgroundWidth(){
+        return backgroundWidth;
+    }
+
+    public int getBackgroundHeight(){
+        return backgroundHeight;
     }
 }

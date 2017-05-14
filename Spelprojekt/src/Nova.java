@@ -19,7 +19,7 @@ public class Nova extends JFrame{
         backgroundPanel.add(new Background());
 
         add(backgroundPanel);
-        setSize(1700, 1000);
+        setSize(1700, 900);
         setTitle("Nova");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

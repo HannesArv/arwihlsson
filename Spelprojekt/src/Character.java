@@ -5,27 +5,34 @@ import javax.swing.*;
 /**
  * Created by Hannes on 11/05/2017.
  */
-public class Character {
+public class Character extends Structure{
     private int dx;
     private int dy;
     private int x;
     private int y;
     private Image image;
 
-    public Character(){
+    public Character(int x, int y){
+        super(x, y);
         initChar();
     }
 
     private void initChar(){
-        ImageIcon ii = new ImageIcon("Spelprojekt/src/images/kamraten.png");
-        image = ii.getImage();
-        x = 50;
-        y = 50;
+        loadImage("Spelprojekt/src/images/kamraten.png", 50, 50);
+        image = super.getImage();
     }
 
     public void move(){
         x += dx;
         y += dy;
+
+        if (x < 0) {
+            x = 0;
+        }
+
+        if (y < 0) {
+            y = 0;
+        }
     }
 
     public int getX(){

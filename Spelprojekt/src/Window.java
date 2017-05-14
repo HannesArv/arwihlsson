@@ -25,7 +25,7 @@ public class Window extends JPanel implements ActionListener{
         setFocusable(true);
         setOpaque(false);
 
-        character = new Character();
+        character = new Character(50, 50);
 
         timer = new Timer(DELAY, this);
         timer.start();

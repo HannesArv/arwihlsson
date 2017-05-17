@@ -44,9 +44,9 @@ public class Window extends JPanel implements ActionListener{
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(character.getImage(), character.getX(), character.getY(), this);
 
-        ArrayList projectiles = character.returnProjectile();
-        for (Object p : projectiles){
-            ammo = (Projectile) p;
+        ArrayList<Projectile> projectiles = character.returnProjectile();
+        for (Projectile p : projectiles){
+            ammo = p;
             g2d.drawImage(ammo.getImage(), ammo.getX(), ammo.getY(), this);
         }
     }
@@ -72,9 +72,9 @@ public class Window extends JPanel implements ActionListener{
     }
 
     public void updateProjectile() {
-        ArrayList projectiles = character.returnProjectile();
+        ArrayList<Projectile> projectiles = character.returnProjectile();
         for (int i = 0; i < projectiles.size(); i++){
-            ammo = (Projectile) projectiles.get(i);
+            ammo = projectiles.get(i);
             ammo.move();
         }
     }

@@ -12,7 +12,7 @@ import javax.swing.*;
  */
 public class Character extends Structure{
 
-    private ArrayList proj;
+    private ArrayList<Projectile> proj;
 
     public Character(int x, int y){
         super(x, y);
@@ -20,7 +20,7 @@ public class Character extends Structure{
     }
 
     private void initChar(){
-        proj = new ArrayList();
+        proj = new ArrayList<>();
 
         loadImage("Spelprojekt/src/images/kamraten.png", 50, 50);
         image = super.getImage();
@@ -181,7 +181,7 @@ public class Character extends Structure{
         Projectile projectile = null;
         proj.add(new Projectile(x, y));
         for (int i = 0; i < proj.size(); i++) {
-            projectile = (Projectile) proj.get(i);
+            projectile = proj.get(i);
         }
         for (int i = 0; i < proj.size(); i++) {
             projectile.setDirection(direction);

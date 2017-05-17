@@ -1,11 +1,9 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -46,12 +44,17 @@ public class Window extends JPanel implements ActionListener {
     private void draw(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(character.getImage(), character.getX(), character.getY(), this);
-        g2d.drawImage(enemy.getImage(), enemy.getX(), enemy.getY(), this);
+        if (enemy.isVisible()){
+            g2d.drawImage(enemy.getImage(), enemy.getX(), enemy.getY(), this);
+        }
 
         ArrayList<Projectile> projectiles = character.returnProjectile();
-        for (Projectile p : projectiles){
-            ammo = p;
-            g2d.drawImage(ammo.getImage(), ammo.getX(), ammo.getY(), this);
+        for (Projectile projectile : projectiles){
+            if (projectile.isVisible()){
+                ammo = projectile;
+                g2d.drawImage(ammo.getImage(), ammo.getX(), ammo.getY(), this);
+            }
+
         }
     }
 
@@ -60,7 +63,29 @@ public class Window extends JPanel implements ActionListener {
         character.move();
         enemy.move();
         updateProjectile();
+        collision();
         repaint();
+    }
+
+    private void updateProjectile(){
+        ArrayList<Projectile> projectiles = character.returnProjectile();
+        for (Projectile projectile : projectiles){
+            ammo = projectile;
+            ammo.move();
+        }
+    }
+
+    private void collision(){
+        Rectangle charR = character.getBounds();
+        Rectangle enemyR = enemy.getBounds();
+        ArrayList<Projectile> projectiles = character.returnProjectile();
+        for (Projectile projectile : projectiles){
+            Rectangle projectileR = projectile.getBounds();
+            if (projectileR.intersects(enemyR)){
+                projectile.dissolve();
+                enemy.setVisible(false);
+            }
+        }
     }
 
     private class TAdapter extends KeyAdapter{
@@ -73,14 +98,6 @@ public class Window extends JPanel implements ActionListener {
         @Override
         public void keyPressed(KeyEvent e){
             character.keyPressed(e);
-        }
-    }
-
-    public void updateProjectile(){
-        ArrayList<Projectile> projectiles = character.returnProjectile();
-        for (int i = 0; i < projectiles.size(); i++){
-            ammo = projectiles.get(i);
-            ammo.move();
         }
     }
 }

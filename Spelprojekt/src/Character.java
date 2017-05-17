@@ -1,11 +1,6 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
-import javax.swing.*;
 
 /**
  * Created by Hannes on 11/05/2017.
@@ -37,6 +32,7 @@ public class Character extends Structure {
 
         loadImage("Spelprojekt/src/images/kamraten.png", 50, 50);
         image = super.getImage();
+        getImageDim();
 
         xLeft = 0;
         xRight = 950;
@@ -197,5 +193,6 @@ public class Character extends Structure {
         for (int i = 0; i < proj.size(); i++){
             projectile.setDirection(direction);
         }
+        projectile.setVisible(true);
     }
 }

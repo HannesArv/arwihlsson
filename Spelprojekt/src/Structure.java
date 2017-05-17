@@ -20,10 +20,6 @@ public class Structure {
     protected int xRight;
     protected int yTop;
     protected int yBottom;
-    protected int yDoorTop;
-    protected int yDoorBottom;
-    protected int xDoorLeft;
-    protected int xDoorRight;
 
     protected int dx;
     protected int dy;
@@ -35,8 +31,8 @@ public class Structure {
     }
 
     protected void getImageDim(){
-        width = image.getWidth(null);
-        height = image.getHeight(null);
+        this.width = image.getWidth(null);
+        this.height = image.getHeight(null);
     }
 
     protected void loadImage(String imageSource, int scaleWidth, int scaleHeight){
@@ -58,14 +54,6 @@ public class Structure {
 
     public int getY(){
         return y;
-    }
-
-    public void setX(int x){
-        this.x = x;
-    }
-
-    public void setY(int y){
-        this.y = y;
     }
 
     public boolean isVisible(){

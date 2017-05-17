@@ -1,4 +1,3 @@
-import java.awt.event.KeyListener;
 
 /**
  * Created by Konrad on 2017-05-17.
@@ -14,6 +13,7 @@ public class Projectile extends Structure {
 
     private void initProjectile(){
         loadImage("Spelprojekt/src/images/kamraten.png", 10, 10);
+        getImageDim();
 
         this.direction = 0;
         setVisible(false);
@@ -94,7 +94,7 @@ public class Projectile extends Structure {
         this.direction = direction;
     }
 
-    private void dissolve(){
+    public void dissolve(){
         direction = 0;
         setVisible(false);
     }

@@ -23,6 +23,7 @@ public class Enemy extends Structure {
     private void initEnemy(){
         loadImage("Spelprojekt/src/images/enemyPig.png", 50, 50);
         image = super.getImage();
+        getImageDim();
 
         enemySpeed = 1;
         dx = enemySpeed;
@@ -64,5 +65,4 @@ public class Enemy extends Structure {
             dx = enemySpeed;
         }
     }
-
 }

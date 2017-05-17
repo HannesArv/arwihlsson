@@ -1,4 +1,3 @@
-import java.awt.*;
 
 /**
  * Created by Hannes on 14/05/2017.
@@ -6,7 +5,6 @@ import java.awt.*;
 public class Enemy extends Structure {
     private int dx;
     private int dy;
-    private Image image;
 
     private int enemySpeed;
 

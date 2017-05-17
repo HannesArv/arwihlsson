@@ -11,6 +11,7 @@ import javax.swing.*;
  */
 public class Character extends Structure{
 
+    private Projectile proj;
 
     public Character(int x, int y){
         super(x, y);
@@ -18,6 +19,8 @@ public class Character extends Structure{
     }
 
     private void initChar(){
+        proj = new Projectile(0, 0);
+
         loadImage("src/images/kamraten.png", 50, 50);
         image = super.getImage();
 
@@ -126,6 +129,9 @@ public class Character extends Structure{
         return image;
     }
 
+    /**
+     * Move the character and fire projectiles!
+     */
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
 
@@ -138,6 +144,9 @@ public class Character extends Structure{
                 break;
             case KeyEvent.VK_S:  dy = 1;
                 break;
+            case KeyEvent.VK_LEFT:  fireProjectile(x, y, 7);
+                break;
+
         }
     }
 
@@ -147,12 +156,20 @@ public class Character extends Structure{
         switch (key) {
             case KeyEvent.VK_A:  dx = 0;
                 break;
-            case KeyEvent.VK_D: dx = 0;
+            case KeyEvent.VK_D:  dx = 0;
                 break;
-            case KeyEvent.VK_W:    dy = 0;
+            case KeyEvent.VK_W:  dy = 0;
                 break;
             case KeyEvent.VK_S:  dy = 0;
                 break;
         }
+    }
+
+    public Projectile returnProjectile(){
+        return proj;
+    }
+
+    private void fireProjectile(int x, int y, int direction){
+        proj.fire(x,y,direction);
     }
 }

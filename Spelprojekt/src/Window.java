@@ -14,6 +14,7 @@ import java.io.File;
 public class Window extends JPanel implements ActionListener{
     private Timer timer;
     private Character character;
+    private Projectile ammo;
     private final int DELAY = 10;
 
     public Window(){
@@ -27,7 +28,6 @@ public class Window extends JPanel implements ActionListener{
         setOpaque(false);
 
         character = new Character(50, 50);
-
         timer = new Timer(DELAY, this);
         timer.start();
     }
@@ -40,14 +40,18 @@ public class Window extends JPanel implements ActionListener{
     }
 
     private void draw(Graphics g){
+        Projectile p = character.returnProjectile();
+
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(character.getImage(), character.getX(), character.getY(), this);
+        g2d.drawImage(p.getImage(), p.getX(), p.getY(), this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e){
         character.move();
         repaint();
+        updateProjectile().move();
     }
 
     private class TAdapter extends KeyAdapter{
@@ -63,4 +67,7 @@ public class Window extends JPanel implements ActionListener{
         }
     }
 
+    public Projectile updateProjectile() {
+        return character.returnProjectile();
+    }
 }

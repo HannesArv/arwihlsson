@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by Konrad on 2017-04-30.
  */
-public class Nova extends JFrame{
+public class Nova extends JFrame {
 
     public Nova(){
         initUI();

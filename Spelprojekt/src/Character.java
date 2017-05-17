@@ -10,7 +10,7 @@ import javax.swing.*;
 /**
  * Created by Hannes on 11/05/2017.
  */
-public class Character extends Structure{
+public class Character extends Structure {
     private int dx;
     private int dy;
     private Image image;
@@ -94,39 +94,39 @@ public class Character extends Structure{
     }
 
     private void mapBoundTop(int yTop, int yBottom, int xDoorLeft, int xDoorRight){
-        if (y < yTop && (x >= xDoorLeft && x <= xDoorRight)) {
-            if (y < yTop - 50) {
+        if (y < yTop && (x >= xDoorLeft && x <= xDoorRight)){
+            if (y < yTop - 50){
                 y = yBottom;
 
                 int REMOVE = 0;
             }
-            if (x < xDoorLeft + 1) {
+            if (x < xDoorLeft + 1){
                 x = xDoorLeft + 1;
             }
-            if (x > xDoorRight - 1) {
+            if (x > xDoorRight - 1){
                 x = xDoorRight - 1;
             }
         }
-        else if (y < yTop) {
+        else if (y < yTop){
             y = yTop;
         }
     }
 
     private void mapBoundBottom(int yTop, int yBottom, int xDoorLeft, int xDoorRight){
-        if (y > yBottom && (x >= xDoorLeft && x <= xDoorRight)) {
-            if (y > yBottom + 50) {
+        if (y > yBottom && (x >= xDoorLeft && x <= xDoorRight)){
+            if (y > yBottom + 50){
                 y = yTop;
 
                 int REMOVE = 0;
             }
-            if (x < xDoorLeft + 1) {
+            if (x < xDoorLeft + 1){
                 x = xDoorLeft + 1;
             }
-            if (x > xDoorRight - 1) {
+            if (x > xDoorRight - 1){
                 x = xDoorRight - 1;
             }
         }
-        else if (y > yBottom) {
+        else if (y > yBottom){
             y = yBottom;
         }
     }
@@ -149,7 +149,7 @@ public class Character extends Structure{
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
 
-        switch (key) {
+        switch (key){
             case KeyEvent.VK_A:  dx = -1;
                 break;
             case KeyEvent.VK_D: dx = 1;
@@ -166,15 +166,13 @@ public class Character extends Structure{
                 break;
             case KeyEvent.VK_UP:  fireProjectile(x + 25, y + 25, 1);
                 break;
-
-
         }
     }
 
     public void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
 
-        switch (key) {
+        switch (key){
             case KeyEvent.VK_A:  dx = 0;
                 break;
             case KeyEvent.VK_D:  dx = 0;
@@ -193,10 +191,10 @@ public class Character extends Structure{
     private void fireProjectile(int x, int y, int direction){
         Projectile projectile = null;
         proj.add(new Projectile(x, y));
-        for (int i = 0; i < proj.size(); i++) {
+        for (int i = 0; i < proj.size(); i++){
             projectile = proj.get(i);
         }
-        for (int i = 0; i < proj.size(); i++) {
+        for (int i = 0; i < proj.size(); i++){
             projectile.setDirection(direction);
         }
     }

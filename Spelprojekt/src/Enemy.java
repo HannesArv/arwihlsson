@@ -3,7 +3,7 @@ import java.awt.*;
 /**
  * Created by Hannes on 14/05/2017.
  */
-public class Enemy extends Structure{
+public class Enemy extends Structure {
     private int dx;
     private int dy;
     private Image image;

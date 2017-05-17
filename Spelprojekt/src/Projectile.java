@@ -7,7 +7,7 @@ public class Projectile extends Structure {
 
     private int direction;
 
-    public Projectile(int x, int y) {
+    public Projectile(int x, int y){
         super(x, y);
         initProjectile();
     }
@@ -24,19 +24,19 @@ public class Projectile extends Structure {
         yBottom = 700;
     }
 
-    public void move() {
+    public void move(){
         dy = 0;
         dx = 0;
-        switch (direction) {
+        switch (direction){
             case 0:
                 return;
             case 1:
-                if (!hit()) {
+                if (!hit()){
                     dy = -2;
                 }
                 break;
             case 2:
-                if (!hit()) {
+                if (!hit()){
                     dx = 1;
                     dy = -1;
                 }
@@ -83,7 +83,7 @@ public class Projectile extends Structure {
         direction = speed;
     }
 
-    public boolean hit() {
+    public boolean hit(){
         return (x >= xRight) || (x <= xLeft) || (y >= yBottom) || (y <= yTop);
     }
 
@@ -94,7 +94,7 @@ public class Projectile extends Structure {
         this.direction = direction;
     }
 
-    private void dissolve() {
+    private void dissolve(){
         direction = 0;
         setVisible(false);
     }

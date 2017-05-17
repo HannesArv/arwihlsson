@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Created by Konrad on 2017-05-08.
  */
 
-public class Window extends JPanel implements ActionListener{
+public class Window extends JPanel implements ActionListener {
     private Timer timer;
     private Character character;
     private Enemy enemy;
@@ -66,17 +66,17 @@ public class Window extends JPanel implements ActionListener{
     private class TAdapter extends KeyAdapter{
 
         @Override
-        public void keyReleased(KeyEvent e) {
+        public void keyReleased(KeyEvent e){
             character.keyReleased(e);
         }
 
         @Override
-        public void keyPressed(KeyEvent e) {
+        public void keyPressed(KeyEvent e){
             character.keyPressed(e);
         }
     }
 
-    public void updateProjectile() {
+    public void updateProjectile(){
         ArrayList<Projectile> projectiles = character.returnProjectile();
         for (int i = 0; i < projectiles.size(); i++){
             ammo = projectiles.get(i);

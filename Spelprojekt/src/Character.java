@@ -1,15 +1,11 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.*;
+import java.util.ArrayList;
 
 /**
  * Created by Hannes on 11/05/2017.
  */
-public class Character extends Structure{
+public class Character extends Structure {
     private int dx;
     private int dy;
     private Image image;
@@ -24,6 +20,8 @@ public class Character extends Structure{
     private int xDoorLeft;
     private int xDoorRight;
 
+    private ArrayList<Projectile> proj;
+
     public Character(int x, int y){
         super(x, y);
         initChar();
@@ -32,6 +30,9 @@ public class Character extends Structure{
     private void initChar(){
         loadImage("https://raw.githubusercontent.com/HannesArv/arwihlsson/master/Spelprojekt/src/images/kamraten.png?token=AUrF0c9QEQuXGuzQTeGUsS5cs5b5iZ-gks5ZJam6wA%3D%3D", 50, 50);
         image = super.getImage();
+        getImageDim();
+
+        proj = new ArrayList<>();
 
         xLeft = 0;
         xRight = 950;
@@ -89,39 +90,39 @@ public class Character extends Structure{
     }
 
     private void mapBoundTop(int yTop, int yBottom, int xDoorLeft, int xDoorRight){
-        if (y < yTop && (x >= xDoorLeft && x <= xDoorRight)) {
-            if (y < yTop - 50) {
+        if (y < yTop && (x >= xDoorLeft && x <= xDoorRight)){
+            if (y < yTop - 50){
                 y = yBottom;
 
                 int REMOVE = 0;
             }
-            if (x < xDoorLeft + 1) {
+            if (x < xDoorLeft + 1){
                 x = xDoorLeft + 1;
             }
-            if (x > xDoorRight - 1) {
+            if (x > xDoorRight - 1){
                 x = xDoorRight - 1;
             }
         }
-        else if (y < yTop) {
+        else if (y < yTop){
             y = yTop;
         }
     }
 
     private void mapBoundBottom(int yTop, int yBottom, int xDoorLeft, int xDoorRight){
-        if (y > yBottom && (x >= xDoorLeft && x <= xDoorRight)) {
-            if (y > yBottom + 50) {
+        if (y > yBottom && (x >= xDoorLeft && x <= xDoorRight)){
+            if (y > yBottom + 50){
                 y = yTop;
 
                 int REMOVE = 0;
             }
-            if (x < xDoorLeft + 1) {
+            if (x < xDoorLeft + 1){
                 x = xDoorLeft + 1;
             }
-            if (x > xDoorRight - 1) {
+            if (x > xDoorRight - 1){
                 x = xDoorRight - 1;
             }
         }
-        else if (y > yBottom) {
+        else if (y > yBottom){
             y = yBottom;
         }
     }
@@ -138,17 +139,28 @@ public class Character extends Structure{
         return image;
     }
 
+    /**
+     * Move the character and fire projectiles!
+     */
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
 
-        switch (key) {
-            case KeyEvent.VK_LEFT:  dx = -1;
+        switch (key){
+            case KeyEvent.VK_A:  dx = -1;
                 break;
-            case KeyEvent.VK_RIGHT: dx = 1;
+            case KeyEvent.VK_D: dx = 1;
                 break;
-            case KeyEvent.VK_UP:    dy = -1;
+            case KeyEvent.VK_W:    dy = -1;
                 break;
-            case KeyEvent.VK_DOWN:  dy = 1;
+            case KeyEvent.VK_S:  dy = 1;
+                break;
+            case KeyEvent.VK_LEFT:  fireProjectile(x + 25, y + 25, 7);
+                break;
+            case KeyEvent.VK_RIGHT:  fireProjectile(x + 25, y + 25, 3);
+                break;
+            case KeyEvent.VK_DOWN:  fireProjectile(x + 25, y + 25, 5);
+                break;
+            case KeyEvent.VK_UP:  fireProjectile(x + 25, y + 25, 1);
                 break;
         }
     }
@@ -156,15 +168,31 @@ public class Character extends Structure{
     public void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
 
-        switch (key) {
-            case KeyEvent.VK_LEFT:  dx = 0;
+        switch (key){
+            case KeyEvent.VK_A:  dx = 0;
                 break;
-            case KeyEvent.VK_RIGHT: dx = 0;
+            case KeyEvent.VK_D:  dx = 0;
                 break;
-            case KeyEvent.VK_UP:    dy = 0;
+            case KeyEvent.VK_W:  dy = 0;
                 break;
-            case KeyEvent.VK_DOWN:  dy = 0;
+            case KeyEvent.VK_S:  dy = 0;
                 break;
         }
+    }
+
+    public ArrayList returnProjectile(){
+        return proj;
+    }
+
+    private void fireProjectile(int x, int y, int direction){
+        Projectile projectile = null;
+        proj.add(new Projectile(x, y));
+        for (int i = 0; i < proj.size(); i++){
+            projectile = proj.get(i);
+        }
+        for (int i = 0; i < proj.size(); i++){
+            projectile.setDirection(direction);
+        }
+        projectile.setVisible(true);
     }
 }

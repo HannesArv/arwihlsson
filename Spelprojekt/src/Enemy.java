@@ -1,12 +1,10 @@
-import java.awt.*;
 
 /**
  * Created by Hannes on 14/05/2017.
  */
-public class Enemy extends Structure{
+public class Enemy extends Structure {
     private int dx;
     private int dy;
-    private Image image;
 
     private int enemySpeed;
 
@@ -23,6 +21,7 @@ public class Enemy extends Structure{
     private void initEnemy(){
         loadImage("Spelprojekt/src/images/enemyPig.png", 50, 50);
         image = super.getImage();
+        getImageDim();
 
         enemySpeed = 1;
         dx = enemySpeed;
@@ -64,5 +63,4 @@ public class Enemy extends Structure{
             dx = enemySpeed;
         }
     }
-
 }

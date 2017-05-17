@@ -16,6 +16,14 @@ public class Structure {
     protected boolean visible;
     protected Image image;
 
+    protected int xLeft;
+    protected int xRight;
+    protected int yTop;
+    protected int yBottom;
+
+    protected int dx;
+    protected int dy;
+
     public Structure(int x, int y){
         this.x = x;
         this.y = y;
@@ -23,15 +31,15 @@ public class Structure {
     }
 
     protected void getImageDim(){
-        width = image.getWidth(null);
-        height = image.getHeight(null);
+        this.width = image.getWidth(null);
+        this.height = image.getHeight(null);
     }
 
     protected void loadImage(String imageSource, int scaleWidth, int scaleHeight){
-        try {
+        try{
             BufferedImage temp = ImageIO.read(new File(imageSource));
             image = temp.getScaledInstance(scaleWidth, scaleHeight, Image.SCALE_DEFAULT);
-        } catch (IOException e) {
+        }catch (IOException e){
             System.err.println("Couldn't find an image");
         }
     }
@@ -46,14 +54,6 @@ public class Structure {
 
     public int getY(){
         return y;
-    }
-
-    public void setX(int x){
-        this.x = x;
-    }
-
-    public void setY(int y){
-        this.y = y;
     }
 
     public boolean isVisible(){

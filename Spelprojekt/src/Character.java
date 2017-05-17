@@ -3,6 +3,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -24,12 +25,16 @@ public class Character extends Structure{
     private int xDoorLeft;
     private int xDoorRight;
 
+    private ArrayList<Projectile> proj;
+
     public Character(int x, int y){
         super(x, y);
         initChar();
     }
 
     private void initChar(){
+        proj = new ArrayList<>();
+
         loadImage("Spelprojekt/src/images/kamraten.png", 50, 50);
         image = super.getImage();
 
@@ -138,18 +143,31 @@ public class Character extends Structure{
         return image;
     }
 
+    /**
+     * Move the character and fire projectiles!
+     */
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
 
         switch (key) {
-            case KeyEvent.VK_LEFT:  dx = -1;
+            case KeyEvent.VK_A:  dx = -1;
                 break;
-            case KeyEvent.VK_RIGHT: dx = 1;
+            case KeyEvent.VK_D: dx = 1;
                 break;
-            case KeyEvent.VK_UP:    dy = -1;
+            case KeyEvent.VK_W:    dy = -1;
                 break;
-            case KeyEvent.VK_DOWN:  dy = 1;
+            case KeyEvent.VK_S:  dy = 1;
                 break;
+            case KeyEvent.VK_LEFT:  fireProjectile(x + 25, y + 25, 7);
+                break;
+            case KeyEvent.VK_RIGHT:  fireProjectile(x + 25, y + 25, 3);
+                break;
+            case KeyEvent.VK_DOWN:  fireProjectile(x + 25, y + 25, 5);
+                break;
+            case KeyEvent.VK_UP:  fireProjectile(x + 25, y + 25, 1);
+                break;
+
+
         }
     }
 
@@ -157,14 +175,29 @@ public class Character extends Structure{
         int key = e.getKeyCode();
 
         switch (key) {
-            case KeyEvent.VK_LEFT:  dx = 0;
+            case KeyEvent.VK_A:  dx = 0;
                 break;
-            case KeyEvent.VK_RIGHT: dx = 0;
+            case KeyEvent.VK_D:  dx = 0;
                 break;
-            case KeyEvent.VK_UP:    dy = 0;
+            case KeyEvent.VK_W:  dy = 0;
                 break;
-            case KeyEvent.VK_DOWN:  dy = 0;
+            case KeyEvent.VK_S:  dy = 0;
                 break;
+        }
+    }
+
+    public ArrayList returnProjectile(){
+        return proj;
+    }
+
+    private void fireProjectile(int x, int y, int direction){
+        Projectile projectile = null;
+        proj.add(new Projectile(x, y));
+        for (int i = 0; i < proj.size(); i++) {
+            projectile = proj.get(i);
+        }
+        for (int i = 0; i < proj.size(); i++) {
+            projectile.setDirection(direction);
         }
     }
 }

@@ -16,6 +16,18 @@ public class Structure {
     protected boolean visible;
     protected Image image;
 
+    protected int xLeft;
+    protected int xRight;
+    protected int yTop;
+    protected int yBottom;
+    protected int yDoorTop;
+    protected int yDoorBottom;
+    protected int xDoorLeft;
+    protected int xDoorRight;
+
+    protected int dx;
+    protected int dy;
+
     public Structure(int x, int y){
         this.x = x;
         this.y = y;

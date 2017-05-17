@@ -10,17 +10,7 @@ import javax.swing.*;
  * Created by Hannes on 11/05/2017.
  */
 public class Character extends Structure{
-    private int dx;
-    private int dy;
-    private Image image;
-    private int xLeft;
-    private int xRight;
-    private int yTop;
-    private int yBottom;
-    private int yDoorTop;
-    private int yDoorBottom;
-    private int xDoorLeft;
-    private int xDoorRight;
+
 
     public Character(int x, int y){
         super(x, y);

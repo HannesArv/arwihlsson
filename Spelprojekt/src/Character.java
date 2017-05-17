@@ -144,8 +144,15 @@ public class Character extends Structure{
                 break;
             case KeyEvent.VK_S:  dy = 1;
                 break;
-            case KeyEvent.VK_LEFT:  fireProjectile(x, y, 7);
+            case KeyEvent.VK_LEFT:  fireProjectile(x + 25, y + 25, 7);
                 break;
+            case KeyEvent.VK_RIGHT:  fireProjectile(x + 25, y + 25, 3);
+                break;
+            case KeyEvent.VK_DOWN:  fireProjectile(x + 25, y + 25, 5);
+                break;
+            case KeyEvent.VK_UP:  fireProjectile(x + 25, y + 25, 1);
+                break;
+
 
         }
     }

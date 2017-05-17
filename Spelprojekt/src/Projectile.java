@@ -30,18 +30,20 @@ public class Projectile extends Structure {
     }
 
     public void move() {
+        dy = 0;
+        dx = 0;
         switch (direction) {
             case 0:
                 return;
             case 1:
                 if (!hit()) {
-                    dy = 2;
+                    dy = -2;
                 }
                 break;
             case 2:
                 if (!hit()) {
                     dx = 1;
-                    dy = 1;
+                    dy = -1;
                 }
                 break;
             case 3:
@@ -51,18 +53,18 @@ public class Projectile extends Structure {
                 break;
             case 4:
                 if (!hit()){
-                    dy = -1;
+                    dy = 1;
                     dx = 1;
                 }
                 break;
             case 5:
                 if (!hit()){
-                   dy = -2;
+                   dy = 2;
                 }
                 break;
             case 6:
                 if (!hit()){
-                    dy = -1;
+                    dy = 1;
                     dx = -1;
                 }
                 break;
@@ -77,13 +79,13 @@ public class Projectile extends Structure {
                     dy = 1;
                 }
         }
+
+        x += dx;
+        y += dy;
     }
 
     public boolean hit() {
-        if ((x >= xRight) || (x <= xLeft) || (y >= yTop) || (y <= yBottom)) {
-            dissolve();
-            return true;
-        } else return false;
+        return (x >= xRight) || (x <= xLeft) || (y >= yBottom) || (y <= yTop);
     }
 
     public void fire(int x, int y, int direction){

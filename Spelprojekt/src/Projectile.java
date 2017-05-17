@@ -18,15 +18,10 @@ public class Projectile extends Structure {
         this.direction = 0;
         setVisible(false);
 
-        xLeft = 0;
-        xRight = 950;
-        yTop = 0;
-        yBottom = 650;
-
-        yDoorTop = 280;
-        yDoorBottom = 320;
-        xDoorLeft = 430;
-        xDoorRight = 470;
+        xLeft = -10;
+        xRight = 1000;
+        yTop = -10;
+        yBottom = 700;
     }
 
     public void move() {

@@ -12,8 +12,6 @@ import javax.swing.*;
 public class Character extends Structure{
     private int dx;
     private int dy;
-    private int x;
-    private int y;
     private Image image;
     private int xLeft;
     private int xRight;
@@ -30,7 +28,7 @@ public class Character extends Structure{
     }
 
     private void initChar(){
-        loadImage("Spelprojekt/src/images/kamraten.png", 50, 50);
+        loadImage("src/images/kamraten.png", 50, 50);
         image = super.getImage();
 
         xLeft = 0;

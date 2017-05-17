@@ -50,6 +50,7 @@ public class Window extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
         character.move();
+        enemy.move();
         repaint();
     }
 

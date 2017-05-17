@@ -12,8 +12,6 @@ import javax.swing.*;
 public class Character extends Structure{
     private int dx;
     private int dy;
-    private int x;
-    private int y;
     private Image image;
 
     private int xLeft;
@@ -28,8 +26,6 @@ public class Character extends Structure{
 
     public Character(int x, int y){
         super(x, y);
-        this.x = x;
-        this.y = y;
         initChar();
     }
 

@@ -130,13 +130,13 @@ public class Character extends Structure{
         int key = e.getKeyCode();
 
         switch (key) {
-            case KeyEvent.VK_LEFT:  dx = -1;
+            case KeyEvent.VK_A:  dx = -1;
                 break;
-            case KeyEvent.VK_RIGHT: dx = 1;
+            case KeyEvent.VK_D: dx = 1;
                 break;
-            case KeyEvent.VK_UP:    dy = -1;
+            case KeyEvent.VK_W:    dy = -1;
                 break;
-            case KeyEvent.VK_DOWN:  dy = 1;
+            case KeyEvent.VK_S:  dy = 1;
                 break;
         }
     }
@@ -145,13 +145,13 @@ public class Character extends Structure{
         int key = e.getKeyCode();
 
         switch (key) {
-            case KeyEvent.VK_LEFT:  dx = 0;
+            case KeyEvent.VK_A:  dx = 0;
                 break;
-            case KeyEvent.VK_RIGHT: dx = 0;
+            case KeyEvent.VK_D: dx = 0;
                 break;
-            case KeyEvent.VK_UP:    dy = 0;
+            case KeyEvent.VK_W:    dy = 0;
                 break;
-            case KeyEvent.VK_DOWN:  dy = 0;
+            case KeyEvent.VK_S:  dy = 0;
                 break;
         }
     }

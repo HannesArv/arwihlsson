@@ -12,13 +12,13 @@ import javax.swing.*;
 public class Character extends Structure{
     private int dx;
     private int dy;
-    private int x;
-    private int y;
     private Image image;
+
     private int xLeft;
     private int xRight;
     private int yTop;
     private int yBottom;
+
     private int yDoorTop;
     private int yDoorBottom;
     private int xDoorLeft;

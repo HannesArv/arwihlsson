@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.util.ArrayList;
 
 /**
  * Created by Konrad on 2017-05-08.
@@ -40,18 +41,21 @@ public class Window extends JPanel implements ActionListener{
     }
 
     private void draw(Graphics g){
-        Projectile p = character.returnProjectile();
-
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(character.getImage(), character.getX(), character.getY(), this);
-        g2d.drawImage(p.getImage(), p.getX(), p.getY(), this);
+
+        ArrayList projectiles = character.returnProjectile();
+        for (Object p : projectiles){
+            ammo = (Projectile) p;
+            g2d.drawImage(ammo.getImage(), ammo.getX(), ammo.getY(), this);
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e){
         character.move();
+        updateProjectile();
         repaint();
-        updateProjectile().move();
     }
 
     private class TAdapter extends KeyAdapter{
@@ -67,7 +71,11 @@ public class Window extends JPanel implements ActionListener{
         }
     }
 
-    public Projectile updateProjectile() {
-        return character.returnProjectile();
+    public void updateProjectile() {
+        ArrayList projectiles = character.returnProjectile();
+        for (int i = 0; i < projectiles.size(); i++){
+            ammo = (Projectile) projectiles.get(i);
+            ammo.move();
+        }
     }
 }

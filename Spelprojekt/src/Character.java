@@ -3,6 +3,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -11,7 +12,7 @@ import javax.swing.*;
  */
 public class Character extends Structure{
 
-    private Projectile proj;
+    private ArrayList proj;
 
     public Character(int x, int y){
         super(x, y);
@@ -19,9 +20,9 @@ public class Character extends Structure{
     }
 
     private void initChar(){
-        proj = new Projectile(0, 0);
+        proj = new ArrayList();
 
-        loadImage("src/images/kamraten.png", 50, 50);
+        loadImage("Spelprojekt/src/images/kamraten.png", 50, 50);
         image = super.getImage();
 
         xLeft = 0;
@@ -172,11 +173,18 @@ public class Character extends Structure{
         }
     }
 
-    public Projectile returnProjectile(){
+    public ArrayList returnProjectile(){
         return proj;
     }
 
     private void fireProjectile(int x, int y, int direction){
-        proj.fire(x,y,direction);
+        Projectile projectile = null;
+        proj.add(new Projectile(x, y));
+        for (int i = 0; i < proj.size(); i++) {
+            projectile = (Projectile) proj.get(i);
+        }
+        for (int i = 0; i < proj.size(); i++) {
+            projectile.setDirection(direction);
+        }
     }
 }

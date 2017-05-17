@@ -13,9 +13,9 @@ public class Projectile extends Structure {
     }
 
     private void initProjectile(){
-        loadImage("src/images/kamraten.png", 10, 10);
+        loadImage("Spelprojekt/src/images/kamraten.png", 10, 10);
 
-        this.direction = 1;
+        this.direction = 0;
         setVisible(false);
 
         xLeft = 0;
@@ -82,6 +82,10 @@ public class Projectile extends Structure {
 
         x += dx;
         y += dy;
+    }
+
+    public void setDirection(int speed){
+        direction = speed;
     }
 
     public boolean hit() {

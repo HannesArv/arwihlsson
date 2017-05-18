@@ -16,7 +16,9 @@ public class Window extends JPanel implements ActionListener {
     private ArrayList<Enemy> enemies;
     private Projectile ammo;
     private GameOver end;
+    private GameOver endBad;
     private boolean gameOver;
+    private boolean gameOverBad;
     private final int DELAY = 10;
 
     public Window() {
@@ -34,7 +36,8 @@ public class Window extends JPanel implements ActionListener {
         character = new Character(50, 50);
         initEnemies();
 
-        end = new GameOver(0, 0, "https://raw.githubusercontent.com/HannesArv/arwihlsson/master/Spelprojekt/src/images/kamraten.png?token=AUrF0c9QEQuXGuzQTeGUsS5cs5b5iZ-gks5ZJam6wA%3D%3D");
+        end = new GameOver(0, 0, "Spelprojekt/src/images/winner.png");
+        endBad = new GameOver(0,0,"Spelprojekt/src/images/endgame.png");
 
         timer = new Timer(DELAY, this);
         timer.start();
@@ -72,6 +75,9 @@ public class Window extends JPanel implements ActionListener {
                 g2d.drawImage(ammo.getImage(), ammo.getX(), ammo.getY(), this);
             }
 
+        }
+        if (gameOverBad){
+            g2d.drawImage(endBad.getImage(), endBad.getX(), endBad.getY(), this);
         }
         if (gameOver) {
             g2d.drawImage(end.getImage(), end.getX(), end.getY(), this);
@@ -124,7 +130,7 @@ public class Window extends JPanel implements ActionListener {
             if (charR.intersects(enemyR)) {
                 character.setVisible(false);
                 enemy.setVisible(false);
-                gameOver();
+                gameOverBad();
             }
         }
         ArrayList<Projectile> projectiles = character.returnProjectile();
@@ -155,6 +161,11 @@ public class Window extends JPanel implements ActionListener {
 
     private void gameOver() {
         gameOver = true;
+        timer.stop();
+    }
+
+    private void gameOverBad(){
+        gameOverBad = true;
         timer.stop();
     }
 

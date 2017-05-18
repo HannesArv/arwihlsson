@@ -19,7 +19,7 @@ public class Projectile extends Structure {
     }
 
     private void initProjectile(){
-        loadImage("https://raw.githubusercontent.com/HannesArv/arwihlsson/master/Spelprojekt/src/images/kamraten.png?token=AUrF0c9QEQuXGuzQTeGUsS5cs5b5iZ-gks5ZJam6wA%3D%3D", 10, 10);
+        loadImage("Spelprojekt/src/images/proj.png", 10, 10);
         getImageDim();
 
         this.direction = 0;

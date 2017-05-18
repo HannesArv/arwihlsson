@@ -27,7 +27,7 @@ public class Character extends Structure {
     }
 
     private void initChar(){
-        loadImage("https://raw.githubusercontent.com/HannesArv/arwihlsson/master/Spelprojekt/src/images/kamraten.png?token=AUrF0c9QEQuXGuzQTeGUsS5cs5b5iZ-gks5ZJam6wA%3D%3D", 50, 50);
+        loadImage("Spelprojekt/src/images/kamraten.png", 50, 50);
         image = super.getImage();
         getImageDim();
 

@@ -45,9 +45,14 @@ public class Window extends JPanel implements ActionListener {
 
     private void initEnemies() {
         enemies = new ArrayList<>();
-        enemies.add(new Enemy(100, 30));
+        enemies.add(new Enemy(180, 30));
         enemies.add(new Enemy(300, 700));
         enemies.add(new Enemy(750, 300));
+        enemies.add(new Enemy(1300, 300));
+        enemies.add(new Enemy(100, 500));
+        enemies.add(new Enemy(1500, 300));
+        enemies.add(new Enemy(1100, 800));
+        enemies.add(new Enemy(650, 600));
     }
 
     @Override

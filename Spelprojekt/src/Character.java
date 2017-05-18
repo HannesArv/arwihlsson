@@ -18,6 +18,7 @@ public class Character extends Structure {
     private int yDoorBottom;
     private int xDoorLeft;
     private int xDoorRight;
+    private static final int CHARACTER_SPEED = 2;
 
     private ArrayList<Projectile> proj;
 
@@ -27,7 +28,7 @@ public class Character extends Structure {
     }
 
     private void initChar(){
-        loadImage("Spelprojekt/src/images/kamraten.png", 50, 50);
+        loadImage("src/images/kamraten.png", 50, 50);
         image = super.getImage();
         getImageDim();
 
@@ -145,13 +146,13 @@ public class Character extends Structure {
         int key = e.getKeyCode();
 
         switch (key){
-            case KeyEvent.VK_A:  dx = -1;
+            case KeyEvent.VK_A:  dx = -CHARACTER_SPEED;
                 break;
-            case KeyEvent.VK_D: dx = 1;
+            case KeyEvent.VK_D: dx = CHARACTER_SPEED;
                 break;
-            case KeyEvent.VK_W:    dy = -1;
+            case KeyEvent.VK_W:    dy = -CHARACTER_SPEED;
                 break;
-            case KeyEvent.VK_S:  dy = 1;
+            case KeyEvent.VK_S:  dy = CHARACTER_SPEED;
                 break;
             case KeyEvent.VK_LEFT:  fireProjectile(x + 25, y + 25, 7);
                 break;

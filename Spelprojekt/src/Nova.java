@@ -37,7 +37,7 @@ public class Nova extends JFrame {
             public void run() {
                 Nova nova = new Nova();
                 try {
-                    BufferedImage temp = ImageIO.read(new File("Spelprojekt/src/images/enemyPig.png"));
+                    BufferedImage temp = ImageIO.read(new File("src/images/enemyPig.png"));
                     image = temp.getScaledInstance(10, 10, Image.SCALE_DEFAULT);
                 }catch (IOException e){
                     System.err.println("Couldn't find an image");

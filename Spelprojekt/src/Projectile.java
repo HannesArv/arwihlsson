@@ -19,7 +19,7 @@ public class Projectile extends Structure {
     }
 
     private void initProjectile(){
-        loadImage("Spelprojekt/src/images/proj.png", 10, 10);
+        loadImage("src/images/proj.png", 10, 10);
         getImageDim();
 
         this.direction = 0;

@@ -36,8 +36,8 @@ public class Window extends JPanel implements ActionListener {
         character = new Character(50, 50);
         initEnemies();
 
-        end = new GameOver(0, 0, "Spelprojekt/src/images/winner.png");
-        endBad = new GameOver(0,0,"Spelprojekt/src/images/endgame.png");
+        end = new GameOver(0, 0, "src/images/winner.png");
+        endBad = new GameOver(0,0,"src/images/endgame.png");
 
         timer = new Timer(DELAY, this);
         timer.start();

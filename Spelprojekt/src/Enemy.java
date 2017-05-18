@@ -13,8 +13,9 @@ public class Enemy extends Structure {
     private int yTop;
     private int yBottom;
 
-    public Enemy(int x, int y){
+    public Enemy(int x, int y, int speed){
         super(x, y);
+        enemySpeed = speed;
         initEnemy();
     }
 
@@ -23,20 +24,34 @@ public class Enemy extends Structure {
         image = super.getImage();
         getImageDim();
 
-        enemySpeed = 1;
         dx = enemySpeed;
-        dy = 0;
+        dy = enemySpeed;
 
         xLeft = 0;
-        xRight = 950;
+        xRight = 1630;
         yTop = 0;
-        yBottom = 650;
+        yBottom = 900;
     }
 
     public void move(){
         x += dx;
         y += dy;
-        mapBound(x, y);
+        simpleMapBound(x, y);
+    }
+
+    private void simpleMapBound(int x, int y){
+        if (y <= yTop){
+            dy = enemySpeed;
+        }
+        if (y >= yBottom){
+            dy = -enemySpeed;
+        }
+        if (x <= xLeft){
+            dx = enemySpeed;
+        }
+        if (x >= xRight){
+            dx = -enemySpeed;
+        }
     }
 
     private void mapBound(int x, int y){

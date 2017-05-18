@@ -1,9 +1,16 @@
 
 /**
  * Created by Konrad on 2017-05-17.
+ * The class for projectiles which are fired by the player
+ * (and possibly by others!)
  */
 public class Projectile extends Structure {
 
+    /**
+     * A number which indicates where this projectile is headed.
+     * A zero means it's stationary, 1 means up, 2 means up and
+     * to the right, 3 means right and so on.
+     */
     private int direction;
 
     public Projectile(int x, int y){
@@ -24,6 +31,9 @@ public class Projectile extends Structure {
         yBottom = 700;
     }
 
+    /**
+     * Determines how the projectile should move, and detects if it has hit anything.
+     */
     public void move(){
         dy = 0;
         dx = 0;
@@ -79,6 +89,10 @@ public class Projectile extends Structure {
         y += dy;
     }
 
+    /**
+     * This method sets the direction of the projectile.
+     * @param speed An int between 0 and 8.
+     */
     public void setDirection(int speed){
         direction = speed;
     }
@@ -94,6 +108,9 @@ public class Projectile extends Structure {
         this.direction = direction;
     }
 
+    /**
+     * Makes the projectile invisible and stationary.
+     */
     public void dissolve(){
         direction = 0;
         setVisible(false);

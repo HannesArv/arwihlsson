@@ -13,91 +13,153 @@ import java.util.ArrayList;
 public class Window extends JPanel implements ActionListener {
     private Timer timer;
     private Character character;
-    private Enemy enemy;
+    private ArrayList<Enemy> enemies;
     private Projectile ammo;
+    private GameOver end;
+    private boolean gameOver;
     private final int DELAY = 10;
 
-    public Window(){
+    public Window() {
         initWindow();
     }
 
-    private void initWindow(){
+    private void initWindow() {
         addKeyListener(new TAdapter());
         setFocusable(true);
         setDoubleBuffered(true);
         setOpaque(false);
 
+        gameOver = false;
+
         character = new Character(50, 50);
-        enemy = new Enemy(50, 50);
+        initEnemies();
+
+        end = new GameOver(0, 0, "https://raw.githubusercontent.com/HannesArv/arwihlsson/master/Spelprojekt/src/images/kamraten.png?token=AUrF0c9QEQuXGuzQTeGUsS5cs5b5iZ-gks5ZJam6wA%3D%3D");
 
         timer = new Timer(DELAY, this);
         timer.start();
     }
 
+    private void initEnemies() {
+        enemies = new ArrayList<>();
+        enemies.add(new Enemy(100, 30));
+        enemies.add(new Enemy(300, 700));
+        enemies.add(new Enemy(750, 300));
+    }
+
     @Override
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         draw(g);
         Toolkit.getDefaultToolkit().sync();
     }
 
-    private void draw(Graphics g){
+    private void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(character.getImage(), character.getX(), character.getY(), this);
-        if (enemy.isVisible()){
-            g2d.drawImage(enemy.getImage(), enemy.getX(), enemy.getY(), this);
+        if (character.isVisible()) {
+            g2d.drawImage(character.getImage(), character.getX(), character.getY(), this);
+        }
+        for (Enemy enemy : enemies) {
+            if (enemy.isVisible()) {
+                g2d.drawImage(enemy.getImage(), enemy.getX(), enemy.getY(), this);
+            }
         }
 
         ArrayList<Projectile> projectiles = character.returnProjectile();
-        for (Projectile projectile : projectiles){
-            if (projectile.isVisible()){
+        for (Projectile projectile : projectiles) {
+            if (projectile.isVisible()) {
                 ammo = projectile;
                 g2d.drawImage(ammo.getImage(), ammo.getX(), ammo.getY(), this);
             }
 
         }
+        if (gameOver) {
+            g2d.drawImage(end.getImage(), end.getX(), end.getY(), this);
+        }
     }
 
     @Override
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed (ActionEvent e){
         character.move();
-        enemy.move();
+        updateEnemies();
         updateProjectile();
         collision();
         repaint();
     }
 
-    private void updateProjectile(){
+
+    private void updateProjectile() {
         ArrayList<Projectile> projectiles = character.returnProjectile();
-        for (Projectile projectile : projectiles){
+        for (Projectile projectile : projectiles) {
             ammo = projectile;
             ammo.move();
         }
     }
 
-    private void collision(){
-        Rectangle charR = character.getBounds();
-        Rectangle enemyR = enemy.getBounds();
-        ArrayList<Projectile> projectiles = character.returnProjectile();
-        for (Projectile projectile : projectiles){
-            Rectangle projectileR = projectile.getBounds();
-            if (projectileR.intersects(enemyR)){
-                projectile.dissolve();
-                enemy.setVisible(false);
+    private void updateEnemies() {
+        if (enemies.isEmpty()){
+            gameOver();
+            return;
+        }
+        for (int i = 0; i < enemies.size(); i++) {
+            Enemy enemy = enemies.get(i);
+            if (enemy.isVisible()) {
+                enemy.move();
+            } else {
+                enemies.remove(i);
             }
         }
     }
 
-    private class TAdapter extends KeyAdapter{
+
+    private void collision() {
+        Rectangle charR = character.getBounds();
+        for (Enemy enemy : enemies) {
+            Rectangle enemyR = enemy.getBounds();
+            if (charR.intersects(enemyR)) {
+                character.setVisible(false);
+                enemy.setVisible(false);
+                gameOver();
+            }
+        }
+        ArrayList<Projectile> projectiles = character.returnProjectile();
+        for (Projectile projectile : projectiles) {
+            Rectangle projectileR = projectile.getBounds();
+            for (Enemy enemy : enemies) {
+                Rectangle enemyR = enemy.getBounds();
+                if (projectileR.intersects(enemyR)) {
+                    projectile.dissolve();
+                    enemy.setVisible(false);
+                    kill();
+                }
+            }
+        }
+    }
+
+    private void kill(){
+        int i = 0;
+        i += 1;
+        if (i == enemies.size()){
+            gameOver();
+        }
+    }
+
+    private void gameOver() {
+        gameOver = true;
+        timer.stop();
+    }
+
+    private class TAdapter extends KeyAdapter {
 
         @Override
-        public void keyReleased(KeyEvent e){
+        public void keyReleased(KeyEvent e) {
             character.keyReleased(e);
         }
 
         @Override
-        public void keyPressed(KeyEvent e){
+        public void keyPressed(KeyEvent e) {
             character.keyPressed(e);
         }
     }
 }
+

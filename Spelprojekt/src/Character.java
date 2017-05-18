@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public class Character extends Structure {
     private int dx;
     private int dy;
-    private Image image;
 
     private int xLeft;
     private int xRight;
@@ -35,14 +34,14 @@ public class Character extends Structure {
         proj = new ArrayList<>();
 
         xLeft = 0;
-        xRight = 950;
+        xRight = 1650;
         yTop = 0;
-        yBottom = 650;
+        yBottom = 900;
 
-        yDoorTop = 280;
-        yDoorBottom = 320;
-        xDoorLeft = 430;
-        xDoorRight = 470;
+        yDoorTop = 430;
+        yDoorBottom = 470;
+        xDoorLeft = 800;
+        xDoorRight = 840;
     }
 
     public void move(){

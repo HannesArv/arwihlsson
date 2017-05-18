@@ -90,9 +90,14 @@ public class Window extends JPanel implements ActionListener {
 
     private void updateProjectile() {
         ArrayList<Projectile> projectiles = character.returnProjectile();
-        for (Projectile projectile : projectiles) {
-            ammo = projectile;
-            ammo.move();
+        for (int i = 0; i < projectiles.size(); i++){
+            Projectile projectile = projectiles.get(i);
+            if (projectile.isVisible()){
+                ammo = projectile;
+                ammo.move();
+            } else {
+                projectiles.remove(i);
+            }
         }
     }
 
@@ -128,7 +133,7 @@ public class Window extends JPanel implements ActionListener {
             for (Enemy enemy : enemies) {
                 Rectangle enemyR = enemy.getBounds();
                 if (projectileR.intersects(enemyR)) {
-                    projectile.dissolve();
+                    projectile.setVisible(false);
                     enemy.setVisible(false);
                     kill();
                 }
@@ -138,8 +143,12 @@ public class Window extends JPanel implements ActionListener {
 
     private void kill(){
         int i = 0;
-        i += 1;
-        if (i == enemies.size()){
+        for (Enemy enemy : enemies){
+            if (!enemy.isVisible()){
+                i+=1;
+            }
+        }
+        if (i > enemies.size()+1){
             gameOver();
         }
     }

@@ -28,7 +28,7 @@ public class Projectile extends Structure {
         xLeft = -10;
         xRight = 1700;
         yTop = -10;
-        yBottom = 700;
+        yBottom = 1000;
     }
 
     /**

@@ -28,7 +28,7 @@ public class Enemy extends Structure {
         dy = enemySpeed;
 
         xLeft = 0;
-        xRight = 1630;
+        xRight = 1650;
         yTop = 0;
         yBottom = 900;
     }

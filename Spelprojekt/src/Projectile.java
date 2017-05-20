@@ -19,7 +19,7 @@ public class Projectile extends Structure {
     }
 
     private void initProjectile(){
-        loadImage("src/images/proj.png", 10, 10);
+        loadImage("/images/proj.png", 10, 10);
         getImageDim();
 
         this.direction = 0;
@@ -42,7 +42,7 @@ public class Projectile extends Structure {
                 return;
             case 1:
                 if (!hit()){
-                    dy = -2;
+                    dy = -3;
                 }
                 break;
             case 2:
@@ -53,7 +53,7 @@ public class Projectile extends Structure {
                 break;
             case 3:
                 if (!hit()){
-                    dx = 2;
+                    dx = 3;
                 }
                 break;
             case 4:
@@ -64,7 +64,7 @@ public class Projectile extends Structure {
                 break;
             case 5:
                 if (!hit()){
-                   dy = 2;
+                   dy = 3;
                 }
                 break;
             case 6:
@@ -75,7 +75,7 @@ public class Projectile extends Structure {
                 break;
             case 7:
                 if (!hit()){
-                    dx = -2;
+                    dx = -3;
                 }
                 break;
             case 8:

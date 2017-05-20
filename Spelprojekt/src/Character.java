@@ -28,7 +28,7 @@ public class Character extends Structure {
     }
 
     private void initChar(){
-        loadImage("src/images/kamraten.png", 50, 50);
+        loadImage("/images/kamraten.png", 50, 50);
         image = super.getImage();
         getImageDim();
 
@@ -144,6 +144,7 @@ public class Character extends Structure {
      */
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
+        Sound sound = new Sound("/sounds/attack.wav");
 
         switch (key){
             case KeyEvent.VK_A:  dx = -CHARACTER_SPEED;
@@ -155,12 +156,16 @@ public class Character extends Structure {
             case KeyEvent.VK_S:  dy = CHARACTER_SPEED;
                 break;
             case KeyEvent.VK_LEFT:  fireProjectile(x + 25, y + 25, 7);
+                sound.playSound();
                 break;
             case KeyEvent.VK_RIGHT:  fireProjectile(x + 25, y + 25, 3);
+                sound.playSound();
                 break;
             case KeyEvent.VK_DOWN:  fireProjectile(x + 25, y + 25, 5);
+                sound.playSound();
                 break;
             case KeyEvent.VK_UP:  fireProjectile(x + 25, y + 25, 1);
+                sound.playSound();
                 break;
         }
     }

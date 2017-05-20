@@ -38,7 +38,7 @@ public class Structure {
 
     protected void loadImage(String imageSource, int scaleWidth, int scaleHeight){
         try {
-            BufferedImage temp = ImageIO.read(new File(imageSource));
+            BufferedImage temp = ImageIO.read(getClass().getResource(imageSource));
             image = temp.getScaledInstance(scaleWidth, scaleHeight, Image.SCALE_DEFAULT);
         }catch (IOException e){
             System.err.println("Couldn't find an image");

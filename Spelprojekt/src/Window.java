@@ -15,10 +15,15 @@ public class Window extends JPanel implements ActionListener {
     private Character character;
     private ArrayList<Enemy> enemies;
     private Projectile ammo;
+
+    private Sound gameSong;
+    private boolean soundStop;
+
     private GameOver end;
     private GameOver endBad;
     private boolean gameOver;
     private boolean gameOverBad;
+
     private final int DELAY = 10;
 
     public Window() {
@@ -32,12 +37,16 @@ public class Window extends JPanel implements ActionListener {
         setOpaque(false);
 
         gameOver = false;
+        soundStop = true;
+        gameSong = new Sound("/sounds/gameSong.wav");
+        gameSong.playSound();
 
         character = new Character(50, 50);
         initEnemies();
 
-        end = new GameOver(0, 0, "src/images/winner.png");
-        endBad = new GameOver(0,0,"src/images/endgame.png");
+
+        end = new GameOver(0, 0, "/images/winner.png");
+        endBad = new GameOver(0,0,"/images/endgame.png");
 
         timer = new Timer(DELAY, this);
         timer.start();
@@ -146,6 +155,8 @@ public class Window extends JPanel implements ActionListener {
                 if (projectileR.intersects(enemyR)) {
                     projectile.setVisible(false);
                     enemy.setVisible(false);
+                    Sound sound = new Sound("/sounds/enemyKill.wav");
+                    sound.playSound();
                     kill();
                 }
             }
@@ -165,11 +176,17 @@ public class Window extends JPanel implements ActionListener {
     }
 
     private void gameOver() {
+        Sound sound = new Sound("/sounds/wonGame.wav");
+        sound.playSound();
+        gameSong.stopSound();
         gameOver = true;
         timer.stop();
     }
 
     private void gameOverBad(){
+        Sound sound = new Sound("/sounds/lostGame.wav");
+        sound.playSound();
+        gameSong.stopSound();
         gameOverBad = true;
         timer.stop();
     }

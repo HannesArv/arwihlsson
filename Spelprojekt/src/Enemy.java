@@ -20,7 +20,7 @@ public class Enemy extends Structure {
     }
 
     private void initEnemy(){
-        loadImage("src/images/enemyPig.png", 50, 50);
+        loadImage("/images/enemyPig.png", 50, 50);
         image = super.getImage();
         getImageDim();
 

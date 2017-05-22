@@ -28,9 +28,9 @@ public class Enemy extends Structure {
         dy = enemySpeed;
 
         xLeft = 0;
-        xRight = 1650;
+        xRight = 950;
         yTop = 0;
-        yBottom = 900;
+        yBottom = 600;
     }
 
     public void move(){

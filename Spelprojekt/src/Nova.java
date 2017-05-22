@@ -24,7 +24,7 @@ public class Nova extends JFrame {
         gamePanel.add(new Background());
 
         add(gamePanel);
-        setSize(1710, 1000);
+        setSize(1000, 700);
         setTitle("Nova");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

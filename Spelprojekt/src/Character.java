@@ -35,14 +35,14 @@ public class Character extends Structure {
         proj = new ArrayList<>();
 
         xLeft = 0;
-        xRight = 1650;
+        xRight = 950;
         yTop = 0;
-        yBottom = 900;
+        yBottom = 600;
 
-        yDoorTop = 430;
-        yDoorBottom = 470;
-        xDoorLeft = 800;
-        xDoorRight = 840;
+        yDoorTop = 280;
+        yDoorBottom = 320;
+        xDoorLeft = 430;
+        xDoorRight = 470;
     }
 
     public void move(){

@@ -23,8 +23,8 @@ public class Background extends JPanel {
         setDoubleBuffered(true);
         setBackground(Color.WHITE);
 
-        backgroundWidth = 1700;
-        backgroundHeight = 1000;
+        backgroundWidth = 1000;
+        backgroundHeight = 700;
 
         grabImage();
     }

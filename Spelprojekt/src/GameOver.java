@@ -5,7 +5,7 @@ public class GameOver extends Structure {
 
     public GameOver(int x, int y, String endGame){
         super(x,y);
-        loadImage(endGame, 1700, 1000);
+        loadImage(endGame, 1000, 700);
         image = super.getImage();
     }
 }
